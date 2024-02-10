@@ -10,16 +10,19 @@ def main():
     parser.add_argument('--config', default=None)
     args = parser.parse_args()
     path = args.path
-    alg = args.algo
+    algo = args.algo
     config = args.config
 
-    if alg.lowercase() == "all":
+    prep = Clusterizer(path, algo, config)
+    if algo.lowercase() == "all":
         if config == None:
             raise "You should have config file."
         else:
             with open('config', 'r') as f:
                 params = yaml.load(f, Loader=yaml.SafeLoader)
     else:
+        if config:
+            prep = Clusterizer.load_params()
 
         # if config == None:
         #     model = Clusterizer.model(alg)
