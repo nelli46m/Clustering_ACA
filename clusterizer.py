@@ -18,6 +18,9 @@ class Clusterizer:
         self.df = pd.read_csv(self.data)
         self.X = self.df.values
 
+    def get_params(self, params):
+        self.params = str(params)
+
     def load_config(self):
         if self.config_path:
             with open(self.config_path, 'r') as file:
