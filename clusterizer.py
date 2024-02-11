@@ -23,6 +23,9 @@ class Clusterizer:
             with open(self.config_path, 'r') as file:
                 self.config = yaml.safe_load(file)
 
+    def get_params(self, params):
+        self.params = int(params)
+
     def cluster(self):
         if self.algo == 'all' and self.config_path:
             for algo, params in self.config.items():
